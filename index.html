@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feliz Cumpleaños Banesa 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+
+background:linear-gradient(
+135deg,
+#667eea,
+#764ba2,
+#f093fb
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+/* TARJETA */
+
+.card{
+
+background:#fff;
+
+width:90%;
+max-width:900px;
+
+border-radius:25px;
+
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+
+display:flex;
+
+padding:30px;
+
+gap:25px;
+
+position:relative;
+
+overflow:hidden;
+}
+
+/* FOTO */
+
+.photo{
+
+width:220px;
+height:220px;
+
+border-radius:50%;
+
+overflow:hidden;
+
+flex-shrink:0;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.photo img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+/* CARTA */
+
+.letter{
+
+flex:1;
+
+position:relative;
+
+}
+
+/* SOBRE */
+
+.envelope{
+
+background:#fdfdfd;
+
+border-radius:15px;
+
+padding:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* TAPA */
+
+.flap{
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:#ff6b6b;
+
+clip-path:polygon(0 0,100% 0,50% 50%);
+
+transform-origin:top;
+
+transition:1.5s;
+
+z-index:5;
+}
+
+/* ABRIR */
+
+.open .flap{
+
+transform:rotateX(180deg);
+}
+
+/* CONTENIDO */
+
+.content{
+
+opacity:0;
+
+transition:2s;
+
+position:relative;
+
+z-index:2;
+}
+
+.open .content{
+
+opacity:1;
+}
+
+/* TITULO */
+
+.title{
+
+font-family:'Dancing Script';
+
+font-size:2.5rem;
+
+margin-bottom:15px;
+}
+
+/* TEXTO */
+
+.message{
+
+font-size:1rem;
+
+line-height:1.7;
+
+color:#333;
+}
+
+.highlight{
+
+color:#ff6b6b;
+
+font-weight:600;
+}
+
+/* PASTEL */
+
+.cake{
+
+font-size:60px;
+
+text-align:center;
+
+margin:15px 0;
+
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+
+}
+
+/* GLOBOS */
+
+.balloon{
+
+position:absolute;
+
+font-size:35px;
+
+animation:floatUp linear infinite;
+
+opacity:.8;
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-120vh);
+}
+
+}
+
+/* CELULAR */
+
+@media(max-width:768px){
+
+.card{
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.photo{
+
+width:160px;
+height:160px;
+
+}
+
+.title{
+
+font-size:2rem;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MUSICA -->
+
+<audio id="music">
+
+<source src="1.mp3" type="audio/mpeg">
+
+</audio>
+
+<div class="card">
+
+<!-- FOTO -->
+
+<div class="photo">
+
+<img src="2.jpg">
+
+</div>
+
+<!-- CARTA -->
+
+<div class="letter">
+
+<div class="envelope" id="envelope">
+
+<div class="flap"></div>
+
+<div class="content">
+
+<h1 class="title">
+
+🎂 Feliz Cumpleaños Banesa 🎂
+
+</h1>
+
+<div class="cake">
+
+🎂
+
+</div>
+
+<p class="message">
+
+Querida <span class="highlight">Banesa</span>,<br><br>
+
+Hoy celebramos tus cumpleaños, un día tan especial como tú.
+Eres una persona amable, alegre y responsable, que con tu esfuerzo constante y tu dedicación logras todo lo que te propones.<br><br>
+
+Admiro mucho la forma en que te esfuerzas por salir adelante, siempre dando lo mejor de ti y demostrando que con constancia y buena actitud se pueden alcanzar grandes cosas.<br><br>
+
+Te deseo de todo corazón mucha felicidad, salud, amor y sueños cumplidos.<br><br>
+
+<strong>
+¡Que este cumpleaños sea el comienzo de tu mejor etapa! 🎉
+</strong>
+
+<strong>Con cariño:</strong><br>
+Pol<br>
+29 Abril 2026
+
+</div>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* ABRIR CARTA A LOS 2 SEGUNDOS */
+
+setTimeout(()=>{
+
+document.getElementById("envelope").classList.add("open");
+
+},2000);
+
+/* MUSICA A LOS 2 SEGUNDOS */
+
+setTimeout(()=>{
+
+let music=document.getElementById("music");
+
+music.play().catch(()=>{
+
+document.body.addEventListener("click",()=>{
+
+music.play();
+
+},{once:true});
+
+});
+
+},2000);
+
+/* GLOBOS */
+
+function createBalloons(){
+
+for(let i=0;i<10;i++){
+
+let balloon=document.createElement("div");
+
+balloon.className="balloon";
+
+balloon.innerHTML="🎈";
+
+balloon.style.left=Math.random()*100+"vw";
+
+balloon.style.bottom="-50px";
+
+balloon.style.animationDuration=(6+Math.random()*4)+"s";
+
+document.body.appendChild(balloon);
+
+}
+
+}
+
+createBalloons();
+
+</script>
+
+</body>
+</html>
